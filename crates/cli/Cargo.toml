@@ -1,0 +1,18 @@
+[package]
+name = "wowup-cli"
+description = "Command line interface for WowUp.rs"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "wowup"
+path = "src/main.rs"
+
+[dependencies]
+wowup-core = { path = "../core" }
+anyhow.workspace = true
+tokio.workspace = true
+serde_json.workspace = true
+tracing-subscriber.workspace = true
+clap = { version = "4", features = ["derive"] }

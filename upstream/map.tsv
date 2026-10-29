@@ -1,0 +1,96 @@
+# Upstream WowUp path (glob, first match wins) <TAB> Rust target, or "skip: reason"
+# Used by scripts/sync-upstream.sh to route each upstream change to the code that ports it.
+wowup-lib/src/addon-providers/wowup-addon-provider.ts	crates/core/src/providers/hub.rs
+wowup-lib/src/addon-providers/tukui-addon-provider.ts	crates/core/src/providers/tukui.rs
+wowup-lib/src/addon-providers/wow-interface-addon-provider.ts	crates/core/src/providers/wowinterface.rs
+wowup-lib/src/addon-provider.ts	crates/core/src/providers/mod.rs
+wowup-lib/src/models/*	crates/core/src/providers/ (serde structs of the matching provider)
+wowup-lib/src/utils/toc.utils.ts	crates/core/src/toc.rs
+wowup-lib/src/utils/wow-client.utils.ts	crates/core/src/models.rs (WowClientType helpers)
+wowup-lib/src/utils/addon.utils.ts	crates/core/src/models.rs (game_version)
+wowup-lib/src/utils/bbcode.utils.ts	crates/core/src/providers/mod.rs (bbcode_to_text)
+wowup-lib/src/utils/*	crates/core/src/providers/mod.rs
+wowup-lib/src/types.ts	crates/core/src/models.rs
+wowup-lib/src/addons.ts	crates/core/src/models.rs
+wowup-lib/src/toc.ts	crates/core/src/models.rs + crates/core/src/toc.rs
+wowup-lib/src/__tests__/*	tests in the matching Rust module
+wowup-lib/*	skip: build tooling
+wowup-electron/src/app/addon-providers/github-addon-provider.ts	crates/core/src/providers/github.rs
+wowup-electron/src/app/addon-providers/curse-addon-provider.ts	crates/core/src/providers/curseforge.rs
+wowup-electron/src/app/addon-providers/wago-addon-provider.ts	crates/core/src/providers/wago.rs (keep the no-ads, user-key-only design)
+wowup-electron/src/app/addon-providers/raiderio-provider.ts	crates/core/src/providers/raiderio.rs
+wowup-electron/src/app/addon-providers/wowup-companion-addon-provider.ts	crates/core/src/providers/raiderio.rs (WowUpCompanionProvider)
+wowup-electron/src/app/addon-providers/zip-provider.ts	crates/core/src/providers/zip.rs
+wowup-electron/src/common/curse/*	crates/core/src/providers/curseforge.rs
+wowup-electron/src/app/services/addons/addon.provider.factory.ts	crates/core/src/providers/mod.rs (all_providers) + crates/core/src/preferences.rs
+wowup-electron/src/app/services/addons/addon-broker.service.ts	crates/core/src/broker.rs
+wowup-electron/src/app/services/addons/*	crates/core/src/addons.rs
+wowup-electron/src/app/services/wowup/wowup-addon.service.ts	crates/core/src/companion.rs
+wowup-electron/assets/WowUpAddon/*	crates/core/src/companion.rs + crates/core/assets/
+wowup-electron/src/app/services/wtf/*	crates/core/src/wtf.rs
+wowup-electron/src/app/services/storage/*	crates/core/src/storage.rs + crates/core/src/preferences.rs
+wowup-electron/src/app/services/warcraft/*	crates/core/src/installations.rs
+wowup-electron/src/app/services/toc/*	crates/core/src/toc.rs
+wowup-electron/src/app/services/download/*	crates/core/src/addons.rs (download)
+wowup-electron/src/app/services/caching/*	crates/core/src/net.rs
+wowup-electron/src/app/services/network/*	crates/core/src/net.rs
+wowup-electron/src/app/services/ads/*	skip: ads removed
+wowup-electron/src/app/services/api/wago-ads-api.service.ts	skip: ads removed
+wowup-electron/src/app/services/analytics/*	skip: telemetry removed
+wowup-electron/src/app/services/push/*	skip: account/push disabled upstream
+wowup-electron/src/app/services/wowup/wowup-account.service.ts	skip: account disabled upstream
+wowup-electron/src/app/services/wowup/patch-notes.service.ts	skip: Electron release notes (see CHANGELOG for app features)
+wowup-electron/src/app/services/news/*	skip: news panel unreachable upstream
+wowup-electron/src/app/services/zoom/*	skip: GUI zoom (terminal handles font size)
+wowup-electron/src/app/services/*	crates/tui/src/app.rs (UI state) or crates/core (logic)
+wowup-electron/src/app/pages/my-addons/*	crates/tui/src/app.rs + ui.rs + main.rs (My Addons tab)
+wowup-electron/src/app/pages/get-addons/*	crates/tui/src/app.rs + ui.rs + main.rs (Get Addons tab)
+wowup-electron/src/app/pages/options/*	crates/tui/src/ui.rs option_rows + main.rs options_key
+wowup-electron/src/app/pages/account-page/*	skip: account disabled upstream
+wowup-electron/src/app/pages/*	crates/tui/src
+wowup-electron/src/app/components/addons/*	crates/tui/src (dialogs = Modal variants)
+wowup-electron/src/app/components/options/*	crates/tui/src (Options tab)
+wowup-electron/src/app/components/news-panel/*	skip: news panel unreachable upstream
+wowup-electron/src/app/components/common/webview/*	skip: ad webview
+wowup-electron/src/app/components/*	crates/tui/src
+wowup-electron/src/app/utils/*	crates/core (find the caller's Rust port)
+wowup-electron/src/common/constants.ts	crates/core/src/preferences.rs + models.rs
+wowup-electron/src/common/wowup/product-db.ts	crates/core/src/installations.rs (decode_product_db)
+wowup-electron/src/common/warcraft/*	crates/core/src/installations.rs + models.rs
+wowup-electron/src/common/*	crates/core/src/models.rs
+wowup-electron/src/assets/i18n/*	crates/tui/locales/ (copy the changed JSON files over)
+wowup-electron/src/environments/*	crates/core/src/providers/mod.rs (ProviderConfig URLs)
+wowup-electron/src/*	crates/tui/src
+wowup-electron/app/curse-folder-scanner.ts	crates/core/src/fingerprint.rs
+wowup-electron/app/wowup-folder-scanner.ts	crates/core/src/fingerprint.rs
+wowup-electron/app/services/scan/*	crates/core/src/fingerprint.rs
+wowup-electron/native/*	crates/core/src/fingerprint.rs (curse_murmur2)
+wowup-electron/app/services/toc/*	crates/core/src/toc.rs
+wowup-electron/app/services/warcraft/*	crates/core/src/installations.rs
+wowup-electron/app/controllers/warcraft/*	crates/core/src/installations.rs
+wowup-electron/app/controllers/wago-ads.controller.ts	skip: ads removed
+wowup-electron/app/services/ads/*	skip: ads removed
+wowup-electron/app/wago-handler.ts	skip: ads removed
+wowup-electron/assets/preload/*	skip: ads removed
+wowup-electron/app/services/download/*	crates/core/src/addons.rs (download)
+wowup-electron/app/file.utils.ts	crates/core/src/fsutil.rs
+wowup-electron/app/ipc-events.ts	crates/core/src/fsutil.rs (unzip/copy/remove handlers)
+wowup-electron/app/stores.ts	crates/core/src/storage.rs
+wowup-electron/app/preferences.ts	crates/core/src/preferences.rs
+wowup-electron/app/push.ts	skip: account/push disabled upstream
+wowup-electron/app/services/metrics/*	skip: Electron process metrics
+wowup-electron/app/controllers/metrics/*	skip: Electron process metrics
+wowup-electron/app/utils/protocol-client.ts	packaging/macos (URL schemes) + crates/tui/src/main.rs
+wowup-electron/app/main.ts	crates/tui/src/main.rs (startup, protocol args) / packaging
+wowup-electron/app/system-tray.ts	skip: no tray for a terminal app
+wowup-electron/app/window-state.ts	skip: Electron window state
+wowup-electron/app/app-menu.ts	skip: Electron menu
+wowup-electron/app/app-updater.ts	scripts/install-macos.sh (rebuild to update)
+wowup-electron/app/*	crates/core or crates/tui (Electron main process)
+wowup-electron/electron-build/*	packaging/
+wowup-electron/package.json	skip unless "version" changed (note new upstream version)
+wowup-electron/CHANGELOG.md	review: lists user-visible features to port
+wowup-electron/*	skip: Electron/Angular tooling
+.github/*	skip: upstream CI
+.claude/*	skip: upstream agent config
+*	review
